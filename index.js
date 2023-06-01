@@ -2,9 +2,10 @@ require('dotenv').config()
 const { DATABASE_CLOUND_URL } = process.env
 const mongoose = require("mongoose")
 const express = require("express")
-const Pessoa = require("./models/pessoa")
+
 const app = express()
 
+//A configuração abaixo faz com que o app consiga enterpretar o JSON tanto no recebimento quanto no retorno dos dados
 app.use(
     express.urlencoded(
         {
@@ -12,49 +13,20 @@ app.use(
         }
     ),
 )
-
 app.use(express.json())
 
 //Routes
 app.get('/', (req, resp) => {
-    resp.json({message: "Ola mundo"})
+    resp.json({message: "Página Inicial"})
 })
 
-app.get('/pessoa', async (req, resp) => {
-    try {
-        const pessoa = await Pessoa.find()
-    
-        resp.status(200).json(pessoa)
-      } catch (error) {
-        resp.status(500).json({ erro: error })
-      }
-})
-
-app.post('/pessoa', async (req, resp) => {
-    
-    const { nome, cpf, negativado, salario, limite_cartao, valor_aluguel } = req.body
-
-    const dados = {
-        nome,
-        cpf,
-        negativado,
-        salario,
-        limite_cartao, 
-        valor_aluguel
-    }
-
-    try {
-        const pessoa = await Pessoa.create(dados)
-
-        resp.status(201).json({ message: 'Pessoa inserida no sistema com sucesso!', data: pessoa })
-    } catch (error) {
-        resp.status(500).json({ erro: error })
-    }
-})
-
+//Pessoa
+const pessoaRoutes = require('./routes/pessoaRoutes')
+app.use('/pessoa', pessoaRoutes)
 //BANCO
+mongoose.set("strictQuery", false);
 mongoose.connect(
-    
+
     DATABASE_CLOUND_URL,
 
 )
