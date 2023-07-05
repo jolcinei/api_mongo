@@ -1,0 +1,23 @@
+<div class="author">
+    <h1 class="author__heading">Seja bem vindo</h1>
+    <p class="author__body">Desenvolvedor e analista.</p>
+</div>
+
+<section class="articles">
+    <h2 class="articles__heading">Posts</h2>
+    <ul class="article-ul">
+        <% dados.forEach(post => { %>
+        <li>
+            <a href="/post/<%= post._id %>">
+                <span><%= post.title %></span>
+                <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+            </a>
+        </li>
+        <% }) %>
+
+    </ul>
+<% if (proximaPagina !== null) { %>
+    <a href="/?page=<%= proximaPagina %>" class="pagination">&lt; Order</a>
+<% } %>
+
+</section>

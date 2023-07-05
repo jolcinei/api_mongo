@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const Pessoa = require("../models/Pessoa")
+const Pessoa = require('../models/Pessoa')
 
 router.get('/', async (req, resp) => {
     try {
@@ -28,14 +28,16 @@ router.get('/:id', async (req, resp) => {
 
 router.patch('/:id', async (req, resp) => {
     const id = req.params.id
-    const { nome, cpf, negativado, salario, limite_cartao, valor_aluguel } = req.body
+    const { nome, cpf, negativado, salario, limite_cartao, valor_aluguel, endereco, email } = req.body
     const dados = {
         nome,
         cpf,
         negativado,
         salario,
         limite_cartao,
-        valor_aluguel
+        valor_aluguel,
+        endereco,
+        email
     }
     try {
 
@@ -68,7 +70,7 @@ router.delete('/:id', async (req, resp) => {
 
 router.post('/', async (req, resp) => {
 
-    const { nome, cpf, negativado, salario, limite_cartao, valor_aluguel } = req.body
+    const { nome, cpf, negativado, salario, limite_cartao, valor_aluguel, endereco, email } = req.body
 
     const dados = {
         nome,
@@ -76,7 +78,9 @@ router.post('/', async (req, resp) => {
         negativado,
         salario,
         limite_cartao,
-        valor_aluguel
+        valor_aluguel,
+        endereco,
+        email
     }
 
     if (!nome) {
