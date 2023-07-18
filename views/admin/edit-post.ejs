@@ -1,0 +1,25 @@
+<a href="/dashboard">
+    <span class="material-symbols-outlined">
+        arrow_back
+    </span>
+</a>
+<div class="admin-title">
+    <h2>Edit Post</h2>
+    <form action="/delete-post/<%= post._id %>?_method=DELETE" method="POST">
+        <button type="submit" value="Delete">
+            <span class="material-symbols-outlined">delete</span>
+        </button>
+    </form>
+</div>
+
+<form action="/edit-post/<%= post._id %>?_method=PUT" method="POST">
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Post title" name="title" value="<%= post.title %>">
+
+    <label for="body"><b>Content</b></label>
+    <textarea name="body" id="" cols="50" rows="10"><%= post.body %></textarea>
+
+    <button type="submit" value="Update">
+        <span class="material-symbols-outlined">update</span>
+    </button>
+</form>

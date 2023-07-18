@@ -85,6 +85,19 @@ footer {
 .header__logo:hover {
     text-decoration: underline;
 }
+/*Sidebar*/
+
+.scrollable {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0rem;
+    padding-top: 0.1rem;
+    background: var(--scroll-sidebar-background);
+    flex: 1;
+
+}
+/*Nav*/
 
 .header__nav {
     grid-area: menu;
@@ -298,4 +311,9 @@ footer {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
+}
+
+
+:root {
+    --scroll-sidebar-background: #26262e;
 }
