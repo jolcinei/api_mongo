@@ -85,6 +85,7 @@ footer {
 .header__logo:hover {
     text-decoration: underline;
 }
+
 /*Sidebar*/
 
 .scrollable {
@@ -97,6 +98,7 @@ footer {
     flex: 1;
 
 }
+
 /*Nav*/
 
 .header__nav {
@@ -287,6 +289,7 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+
 .admin-posts {
     padding: 0;
     margin: 0;
@@ -313,6 +316,12 @@ footer {
     padding: 10px 0;
 }
 
+.ck-editor__editable {
+    border: 1px solid black;
+    max-height: 600px;
+    overflow: auto;
+    min-height: 200px;
+}
 
 :root {
     --scroll-sidebar-background: #26262e;

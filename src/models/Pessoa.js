@@ -2,10 +2,16 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const Pessoa = mongoose.model('Pessoa', {
-  nome: String,
-  cpf: String,
-  negativado: Boolean,
-  salario: Number,
+  nome: {
+    type: String,
+    required: true,
+  },
+  cpf_cnpj: {
+    type: String,
+    required: true,
+  },
+  ativo: Boolean,
+  data_nascimento: Date,
   limite_cartao: Number,
   valor_aluguel: Number,
   email: {
@@ -19,11 +25,12 @@ const Pessoa = mongoose.model('Pessoa', {
   },
   endereco: [
     {
+      cep: String,
       rua: String,
       numero: String,
       municipio: String,
       uf: String,
-      cep: String,
+      padrao: Boolean,
       createdAt: Date,
       updatedAt: Date,
     }
@@ -34,6 +41,14 @@ const Pessoa = mongoose.model('Pessoa', {
       numero: String
     }
   ],
+  social: [
+    {
+      rede_social: String,
+      user: String,
+      page_url: String
+    }
+  ],
+  opcionais: JSON,
   createdAt: {
     type: Date,
     default: Date.now

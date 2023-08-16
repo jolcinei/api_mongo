@@ -41,7 +41,7 @@ router.patch('/:id', async (req, resp) => {
     }
     try {
 
-        const editaPessoa = await Pessoa.updateOne({ _id: id }, dados)
+        const editaPessoa = await Pessoa.updateOne({ _id: id }, { $set: dados })
         if (editaPessoa.matchedCount === 0) {
             resp.status(422).json({ message: 'Pessoa não localizada.' })
             return

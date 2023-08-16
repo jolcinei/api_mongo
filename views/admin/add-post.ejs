@@ -9,8 +9,19 @@
     <input type="text" placeholder="Post title" name="title">
 
     <label for="body"><b>Content</b></label>
-    <textarea name="body" id="" cols="50" rows="10"></textarea>
+    <textarea name="body" id="editor" class="contenteditable" cols="50" rows="30"></textarea>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/translations/pt-br.js"></script>
 
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                language: 'pt-br'
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     <button type="submit" value="Add">
         <span class="material-symbols-outlined">add</span>
     </button>

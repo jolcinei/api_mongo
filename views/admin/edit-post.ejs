@@ -17,8 +17,19 @@
     <input type="text" placeholder="Post title" name="title" value="<%= post.title %>">
 
     <label for="body"><b>Content</b></label>
-    <textarea name="body" id="" cols="50" rows="10"><%= post.body %></textarea>
+    <textarea name="body" id="editor" cols="50" rows="10"><%= post.body %></textarea>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/translations/pt-br.js"></script>
 
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                language: 'pt-br'
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     <button type="submit" value="Update">
         <span class="material-symbols-outlined">update</span>
     </button>
